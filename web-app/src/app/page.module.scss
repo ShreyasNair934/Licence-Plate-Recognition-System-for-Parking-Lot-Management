@@ -1,0 +1,23 @@
+.main {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+
+    &__intro {
+        font-size: 40px;
+        font-weight: 300;
+
+        color: white;
+        text-align: center;
+        margin: 1em 1em 1.5em 1em;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main {
+        grid-template-columns: 1fr 1fr;
+        &__intro {
+            font-size: 50px;
+        }
+    }
+}
