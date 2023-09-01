@@ -6,16 +6,16 @@ const Login = () => {
         <>
             <section className={styles.emailForm}>
                 <div className={styles.emailForm__prompt}>
-                    Enter your device ID to access your plant data
+                    Enter your Vehicle Plate Number to access your account
                 </div>
                 <div className={styles.emailForm__form}>
                     <input
                         className={styles.emailForm__form__input}
                         type="text"
-                        placeholder="Enter your device ID"
+                        placeholder="Enter your Vehicle Plate Number"
                     />
                     <button className={styles.emailForm__form__button}>
-                        Login
+                        Verify
                     </button>
                 </div>
             </section>
