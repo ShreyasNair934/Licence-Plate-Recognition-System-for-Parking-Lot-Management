@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <main className={styles.main}>
             <div className={styles.main__intro}>
-                WELCOME TO THE PLANT MONITOR VIEWER
+                WELCOME TO THE PARKING MONITOR APP
             </div>
             <Login />
         </main>
