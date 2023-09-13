@@ -1,7 +1,8 @@
 import styles from "./page.module.scss";
-import Login from "./components/Login";
+import Login from "@/components/Login";
 
 const Home = () => {
+    console.log("hi");
     return (
         <main className={styles.main}>
             <div className={styles.main__intro}>
@@ -13,3 +14,4 @@ const Home = () => {
 };
 
 export default Home;
+//use rafce to create a react arrow function component

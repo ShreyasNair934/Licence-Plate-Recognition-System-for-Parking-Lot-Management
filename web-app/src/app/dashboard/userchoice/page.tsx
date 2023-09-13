@@ -1,7 +1,7 @@
 import styles from "./page.module.scss";
 
-const Dashboard = () => {
+const Userchoice = () => {
     return <main className={styles.main}>Dashboard</main>;
 };
 
-export default Dashboard;
+export default Userchoice;
