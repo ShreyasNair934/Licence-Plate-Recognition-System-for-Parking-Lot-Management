@@ -13,7 +13,6 @@ const Navbar = (props: any) => {
             title: "Home",
             url: "/",
             showOnPages: [
-                "/dashboard",
                 "/dashboard/profile",
                 "/dashboard/settings",
                 "/dashboard/admin",
