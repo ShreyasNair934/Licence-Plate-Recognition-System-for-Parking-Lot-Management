@@ -1,5 +1,5 @@
 import styles from "./page.module.scss";
-import Login from "@/components/Login";
+import NumberplateEntry from "@/components/NumberplateEntry";
 
 const Home = () => {
     console.log("hi");
@@ -8,7 +8,7 @@ const Home = () => {
             <div className={styles.main__intro}>
                 WELCOME TO THE PARKING MONITOR APP
             </div>
-            <Login />
+            <NumberplateEntry />
         </main>
     );
 };
