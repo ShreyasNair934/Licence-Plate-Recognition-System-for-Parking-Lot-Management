@@ -1,3 +1,10 @@
 .main {
-    color: white;
+    &__intro {
+        font-size: 40px;
+        font-weight: 200;
+
+        color: white;
+        text-align: center;
+        margin: 1em 1em 1.5em 1em;
+    }
 }
