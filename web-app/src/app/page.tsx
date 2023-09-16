@@ -2,7 +2,6 @@ import styles from "./page.module.scss";
 import NumberplateEntry from "@/components/NumberplateEntry";
 
 const Home = () => {
-    console.log("hi");
     return (
         <main className={styles.main}>
             <div className={styles.main__intro}>

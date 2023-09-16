@@ -3,6 +3,8 @@
 import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.scss";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = (props: any) => {
     const pathname = usePathname();
@@ -18,31 +20,39 @@ const Navbar = (props: any) => {
                 "/dashboard/admin",
             ],
         },
-
-        {
-            title: "Profile",
-            url: "/dashboard/profile",
-            showOnPages: ["/dashboard"],
-        },
     ];
 
     if (isAuthenticated) {
-        links.push({
-            title: "Logout",
-            url: "/dashboard/logout",
-            showOnPages: [
-                "/dashboard",
-                "/dashboard/profile",
-                "/dashboard/settings",
-                "/dashboard/admin",
-            ],
-        });
+        links.push(
+            {
+                title: "Logout",
+                url: "/dashboard/logout",
+                showOnPages: [
+                    "/dashboard",
+                    "/dashboard/profile",
+                    "/dashboard/settings",
+                    "/dashboard/admin",
+                ],
+            },
+            {
+                title: "Profile",
+                url: "/dashboard/profile",
+                showOnPages: ["/dashboard"],
+            },
+        );
     } else {
-        links.push({
-            title: "Admin Login",
-            url: "/dashboard/login",
-            showOnPages: ["/"],
-        });
+        links.push(
+            {
+                title: "Admin Login",
+                url: "/dashboard/login",
+                showOnPages: ["/"],
+            },
+            {
+                title: "Exit",
+                url: "/",
+                showOnPages: ["/dashboard"],
+            },
+        );
     }
 
     if (isAdmin) {
@@ -67,7 +77,14 @@ const Navbar = (props: any) => {
 
     return (
         <nav className={styles.nav}>
-            <div className={styles.nav__title}>PARKING MONITOR</div>
+            <div className={styles.nav__title}>
+                <FontAwesomeIcon
+                    icon={faCar}
+                    style={{ fontSize: 25, color: "white" }}
+                />
+                <span>&nbsp;</span>
+                PARKING MONITOR
+            </div>
             <ul className={styles.nav__list}>
                 {links.map((link, index) => {
                     // Check if the link should be displayed on the current page
