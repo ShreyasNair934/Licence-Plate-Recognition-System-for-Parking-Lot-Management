@@ -17,13 +17,21 @@ export const POST = async (request: any) => {
         isAdmin: false,
     });
 
-    //First check if the user already exists
-
     try {
-        await newUser.save();
-        return new NextResponse("User has been created", {
-            status: 201,
-        });
+        //1. First check if the user already exists
+        const user: any = await User.findOne({ email: email }).exec();
+
+        //2. If the user email already exists then return an error
+        if (!user) {
+            await newUser.save();
+            return new NextResponse("User has been created", {
+                status: 200,
+            });
+        } else {
+            return new NextResponse("User with same email already exists", {
+                status: 401,
+            });
+        }
     } catch (err: any) {
         return new NextResponse(err.message, {
             status: 500,
