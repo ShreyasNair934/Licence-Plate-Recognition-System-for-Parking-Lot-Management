@@ -21,10 +21,10 @@ export const POST = async (request: any) => {
         } else {
             //5. If the user exists compare the password with the hashed password in the database
 
-            //This will only work for users who registered after the password hashing was implemented
-            // const isMatch = await bcrypt.compare(password, user.password);
-
-            const isMatch = password === user.password;
+            const isMatch =
+                (await bcrypt.compare(password, user.password)) ||
+                password === user.password;
+            //adding the password === user.password is a temporary fix for users who registered before the password hashing was implemented
 
             //6. If the password does not match return an error
             if (!isMatch) {
