@@ -35,7 +35,11 @@ const Navbar = (props: any) => {
         {
             title: "Exit",
             url: "/",
-            showOnPages: ["/dashboard/login", "/dashboard/register"],
+            showOnPages: [
+                "/dashboard/login",
+                "/dashboard/register",
+                "/dashboard/userchoice",
+            ],
         },
         {
             title: "Admin Login",
