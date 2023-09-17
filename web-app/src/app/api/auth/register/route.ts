@@ -14,7 +14,7 @@ export const POST = async (request: any) => {
         name,
         email,
         password: hashedPassword,
-        isAdmin: false,
+        role: "user",
     });
 
     try {
