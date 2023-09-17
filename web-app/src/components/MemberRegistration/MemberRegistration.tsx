@@ -43,7 +43,7 @@ const MemberRegistration = () => {
                     setErrorWarning("Server error, please try again later");
             } catch (err: any) {
                 setError(err);
-                console.log(error);
+                // console.log(error);
             }
         } else {
             setErrorWarning("Please enter a valid username, email or password");

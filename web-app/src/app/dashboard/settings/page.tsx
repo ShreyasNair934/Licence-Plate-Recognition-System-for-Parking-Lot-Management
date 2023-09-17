@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Settings = async () => {
     const session = await getServerSession(authOptions);
-    console.log(session?.user);
+    // console.log(session?.user);
 
     const generateSettings = () => {
         if (session?.user?.role !== "admin") {

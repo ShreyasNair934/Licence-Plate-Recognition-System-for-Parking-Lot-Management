@@ -19,7 +19,7 @@ const Navbar = (props: any) => {
     let plateEntry = searchParams.get("numberplate");
     const session = useSession();
 
-    console.log(session.data);
+    // console.log(session.data);
     const isAuthenticated = session.status === "authenticated";
     const isAdmin = session.data?.user?.role === "admin";
 

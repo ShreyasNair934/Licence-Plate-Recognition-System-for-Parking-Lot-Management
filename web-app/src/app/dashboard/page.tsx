@@ -4,7 +4,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 
 const Dashboard = async () => {
     const session = await getServerSession(authOptions);
-    console.log(session?.user);
+    // console.log(session?.user);
 
     const generateDashboard = () => {
         if (session?.user === null || session?.user === undefined) {
