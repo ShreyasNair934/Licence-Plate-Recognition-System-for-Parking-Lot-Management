@@ -18,7 +18,7 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
-        isAdmin: {
+        role: {
             type: String,
             required: true,
         },

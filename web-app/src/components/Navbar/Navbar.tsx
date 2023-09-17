@@ -5,11 +5,14 @@ import styles from "./Navbar.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
+import { useSession } from "next-auth/react";
 
 const Navbar = (props: any) => {
     const pathname = usePathname();
     const { isAuthenticated, isAdmin } = props;
+    const session = useSession();
 
+    console.log(session.data);
     const links = [
         {
             title: "Home",
