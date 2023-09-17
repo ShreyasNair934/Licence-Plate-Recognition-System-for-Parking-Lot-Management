@@ -24,6 +24,7 @@
         width: 100%;
         font-size: 17px;
         list-style-type: none;
+        cursor: pointer;
 
         &__link {
             text-decoration: none;
@@ -53,6 +54,13 @@
         justify-content: center;
         margin-bottom: 10px;
     }
+}
+
+.numberplate {
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
 }
 
 @media screen and (min-width: 768px) {
