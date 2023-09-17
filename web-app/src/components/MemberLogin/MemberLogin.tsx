@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./MemberLogin.module.scss";
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
 import { signIn, useSession } from "next-auth/react";
