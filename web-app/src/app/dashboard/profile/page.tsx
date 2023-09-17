@@ -4,7 +4,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Profile = async () => {
     const session = await getServerSession(authOptions);
-    console.log(session?.user);
+    // console.log(session?.user);
 
     const generateProfile = () => {
         if (session?.user === null || session?.user === undefined) {
