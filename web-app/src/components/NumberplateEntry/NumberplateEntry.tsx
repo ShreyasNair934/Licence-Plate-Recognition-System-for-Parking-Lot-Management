@@ -12,7 +12,7 @@ const NumberplateEntry = () => {
         <>
             <section className={styles.emailForm}>
                 <div className={styles.emailForm__prompt}>
-                    Please Enter your Vehicle's Plate Number
+                    Please Enter your Vehicle Plate Number
                 </div>
                 <div className={styles.emailForm__form}>
                     <input
