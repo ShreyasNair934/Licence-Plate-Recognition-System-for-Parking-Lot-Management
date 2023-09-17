@@ -18,7 +18,7 @@ const NumberplateEntry = () => {
                     <input
                         className={styles.emailForm__form__input}
                         type="text"
-                        placeholder="Enter your Vehicle's Plate Number"
+                        placeholder="Enter your Vehicle Plate Number"
                         onInput={(e) => {
                             setNumberplate(
                                 (e.target as HTMLInputElement).value,
