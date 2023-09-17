@@ -28,10 +28,7 @@ const NumberplateEntry = () => {
 
                     {numberplate.length != 0 ? (
                         <Link
-                            href={
-                                "/dashboard/userchoice?numberplate=" +
-                                { numberplate }
-                            }
+                            href={`/dashboard/userchoice?numberplate=${numberplate}`}
                             className={styles.emailForm__form__button}
                         >
                             Confirm
