@@ -1,8 +1,13 @@
+"use client";
+
 import React from "react";
 import styles from "./NumberplateEntry.module.scss";
 import Link from "next/link";
+import { useState } from "react";
 
 const NumberplateEntry = () => {
+    const [numberplate, setNumberplate] = useState("");
+
     return (
         <>
             <section className={styles.emailForm}>
@@ -14,13 +19,23 @@ const NumberplateEntry = () => {
                         className={styles.emailForm__form__input}
                         type="text"
                         placeholder="Enter your Vehicle's Plate Number"
+                        onInput={(e) => {
+                            setNumberplate(
+                                (e.target as HTMLInputElement).value,
+                            );
+                        }}
                     />
-                    <Link
-                        href="/dashboard/userchoice"
-                        className={styles.emailForm__form__button}
-                    >
-                        Confirm
-                    </Link>
+
+                    {numberplate.length != 0 ? (
+                        <Link
+                            href={`/dashboard/userchoice?numberplate=${numberplate}`}
+                            className={styles.emailForm__form__button}
+                        >
+                            Confirm
+                        </Link>
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </section>
             <div className={styles.errorWarning}></div>

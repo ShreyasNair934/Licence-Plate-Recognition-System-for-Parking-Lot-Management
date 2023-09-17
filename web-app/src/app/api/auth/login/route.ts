@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import connect from "@/utils/db";
-import User from "@/models/user";
 import bcrypt from "bcrypt";
+import User from "@/models/user";
 
 //POST is preferred over GET for login because we don't want to send the password in the URL
 export const POST = async (request: any) => {

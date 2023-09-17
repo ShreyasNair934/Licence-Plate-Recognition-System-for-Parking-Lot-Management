@@ -2,46 +2,52 @@
 
 import React from "react";
 import styles from "./MemberLogin.module.scss";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotate } from "@fortawesome/free-solid-svg-icons";
+import { signIn, useSession } from "next-auth/react";
 
 const MemberLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorWarning, setErrorWarning] = useState("");
-    const [error, setError] = useState(null);
     const [pendingResponse, setPendingResponse] = useState(false);
+    const successMessage = "Logged in successfully";
 
     const validateEmail = email.length > 3 && email.includes("@");
     const validatePassword = password.length > 3;
 
     const router = useRouter();
+    const session = useSession();
 
-    const handleSubmit = async () => {
+    useEffect(() => {
+        // This effect runs when the component mounts and when `session.status` changes
+        if (session.status === "unauthenticated") {
+            setPendingResponse(false);
+        }
+        if (session.status === "authenticated") {
+            router?.push("/dashboard");
+        }
+    }, [session.status]); // Only re-run this effect when `session.status` changes
+
+    const handleSubmit = async (e: any) => {
         setPendingResponse(true);
+
         if (validateEmail && validatePassword) {
-            try {
-                const res = await fetch("/api/auth/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password,
-                    }),
-                });
-                res.status === 200 && router.push("/dashboard");
-                res.status === 401 && setErrorWarning("Invalid password");
-                res.status === 404 &&
-                    setErrorWarning("No user found with that email");
-                res.status === 500 &&
-                    setErrorWarning("Server error, please try again later");
-            } catch (err: any) {
-                setError(err);
-                console.log(error);
+            e.preventDefault();
+            const res = await signIn("credentials", {
+                email,
+                password,
+                redirect: false,
+            });
+
+            const errorMessage = await res?.error;
+
+            if (errorMessage) {
+                setErrorWarning(errorMessage);
+            } else {
+                setErrorWarning(successMessage);
             }
         } else {
             setErrorWarning("Please enter a valid email and/or password");
@@ -94,7 +100,11 @@ const MemberLogin = () => {
             </section>
             <div
                 className={`${styles.errorWarning}  ${
-                    errorWarning.length != 0 ? styles.error : styles.regular
+                    errorWarning.includes(successMessage)
+                        ? styles.success
+                        : errorWarning.length != 0
+                        ? styles.error
+                        : styles.regular
                 }`}
             >
                 {errorWarning}
