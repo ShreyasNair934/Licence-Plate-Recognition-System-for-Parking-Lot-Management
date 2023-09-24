@@ -15,6 +15,7 @@ export const POST = async (request: any) => {
         email,
         password: hashedPassword,
         role: "user",
+        vehicles: Array<String>(),
     });
 
     try {

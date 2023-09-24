@@ -6,7 +6,9 @@ export const GET = async (request: any) => {
     try {
         await connect();
 
-        const users: any = await User.find();
+        const selectedFields = ["name", "email", "vehicles"];
+
+        const users: any = await User.find().select(selectedFields).exec();
 
         return new NextResponse(users, { status: 200 });
     } catch (err) {

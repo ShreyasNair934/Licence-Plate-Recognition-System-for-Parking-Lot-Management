@@ -22,6 +22,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        vehicles: {
+            type: Array<String>,
+            required: false,
+        },
     },
     { timestamps: true },
 );
