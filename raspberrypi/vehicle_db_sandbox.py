@@ -42,6 +42,7 @@ class VehicleData:
 
         client.close()
 
+    # Static method to generate a random vehicle numberplate only for example testing
     @staticmethod
     def generate_random_vehicle_number():
         letters = ''.join(random.choices(string.ascii_uppercase, k=3))
