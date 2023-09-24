@@ -12,8 +12,8 @@ load_dotenv()
 
 # mongodb uri obtained using the environment variables
 uri = os.getenv("MONGODB_URI")
-db_name = os.getenv("MONGODB_DB_NAME")
-collection_name = os.getenv("MONGODB_COLLECTION_NAME")
+db_name = os.getenv("MONGODB_DB")
+collection_name = os.getenv("MONGODB_COLLECTION")
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 # Connect to the MongoDB database and collection within the database
