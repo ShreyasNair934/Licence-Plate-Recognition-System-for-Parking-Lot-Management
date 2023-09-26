@@ -1,7 +1,7 @@
 import cv2
 import time
 
-plate_cascade = cv2.CascadeClassifier('haarcascade_russian_plate_number.xml')  
+plate_cascade = cv2.CascadeClassifier('D:\SIT329-Group-Project\camera-capture\haarcascade_russian_plate_number.xml')  
 
 cap = cv2.VideoCapture(0)
 
