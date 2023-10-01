@@ -1,12 +1,23 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+from dotenv import load_dotenv, dotenv_values
 import cv2
 import numpy as np
 import time
+import os
 
 
-client = MongoClient(MONGODB_URI, server_api=ServerApi("1"))
-db = client[MONGODB_DB]
+# Will load the .env file where the environment variables are stored for security purposes
+load_dotenv()
+
+# mongodb uri obtained using the environment variables
+uri = os.getenv("MONGODB_URI")
+db_name = os.getenv("MONGODB_DB")
+
+client = MongoClient(uri, server_api=ServerApi("1"))
+
+# Connect to the MongoDB database and collection within the database
+db = client[f"{db_name}"]
 image_collection = db["car_images"]
 
 
