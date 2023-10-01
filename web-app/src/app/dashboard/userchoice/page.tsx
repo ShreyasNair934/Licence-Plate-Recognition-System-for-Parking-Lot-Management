@@ -10,13 +10,13 @@ import { use } from "react";
 
 const Userchoice = () => {
     const userChoiceDataList = [
-        {
-            title: "CONTINUE AS GUEST",
-            icon: faUser,
-            description:
-                "View and pay for your parking information without an account. We won't be able to send you any emails.",
-            url: "/dashboard",
-        },
+        // {
+        //     title: "CONTINUE AS GUEST",
+        //     icon: faUser,
+        //     description:
+        //         "View and pay for your parking information without an account. We won't be able to send you any emails.",
+        //     url: "/dashboard",
+        // },
         {
             title: "REGISTER AS NEW MEMBER",
             icon: faUserPlus,
