@@ -4,7 +4,7 @@ import User from "@/models/user";
 import { getSession } from "next-auth/react";
 import { NextApiRequest } from "next";
 
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: any) => {
     const session = await getSession({ req: request });
 
     if (!session) {
