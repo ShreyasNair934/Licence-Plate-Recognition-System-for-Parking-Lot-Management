@@ -1,0 +1,48 @@
+.prompt {
+    font-size: 30px;
+    font-weight: 300;
+    margin: 0.2em;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 300px;
+}
+
+.mainTable {
+    width: 90%;
+    margin: auto;
+
+    &__header {
+        background-color: rgba(3, 73, 114, 0.307);
+        color: #fff;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+
+        &__element {
+            padding: 5px;
+            text-align: center;
+            border-top: 1px solid #fff;
+        }
+    }
+
+    &__body {
+        background-color: #d3e9f8c7;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+
+        &__row:nth-child(even) {
+            background-color: #ffffff13;
+        }
+
+        &__element {
+            padding: 10px;
+            text-align: center;
+        }
+    }
+}

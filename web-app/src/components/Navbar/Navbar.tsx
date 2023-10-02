@@ -42,8 +42,8 @@ const Navbar = (props: any) => {
             ],
         },
         {
-            title: "Admin Login",
-            url: "/dashboard/login",
+            title: "Login or Register",
+            url: "/dashboard/userchoice",
             showOnPages: ["/"],
         },
     ];
@@ -139,8 +139,8 @@ const Navbar = (props: any) => {
                     {isAuthenticated && (
                         <div
                             className={styles.nav__list__link}
-                            onClick={() => {
-                                signOut({ redirect: false }).then(() => {
+                            onClick={async () => {
+                                await signOut({ redirect: false }).then(() => {
                                     router.push("/");
                                 });
                                 setPlateNumber("");

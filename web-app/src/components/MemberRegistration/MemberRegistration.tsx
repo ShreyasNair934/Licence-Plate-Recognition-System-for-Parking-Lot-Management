@@ -11,6 +11,7 @@ const MemberRegistration = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [numberplate, setNumberplate] = useState("");
     const [errorWarning, setErrorWarning] = useState("");
     const [error, setError] = useState(null);
     const [pendingResponse, setPendingResponse] = useState(false);
@@ -18,12 +19,18 @@ const MemberRegistration = () => {
     const validateEmail = email.length > 3 && email.includes("@");
     const validatePassword = password.length > 3;
     const validateUserName = name.length > 0;
+    const validateNumberplate = numberplate.length > 0;
 
     const router = useRouter();
 
     const handleSubmit = async () => {
         setPendingResponse(true);
-        if (validateEmail && validatePassword && validateUserName) {
+        if (
+            validateEmail &&
+            validatePassword &&
+            validateUserName &&
+            validateNumberplate
+        ) {
             try {
                 const res = await fetch("/api/auth/register", {
                     method: "POST",
@@ -34,11 +41,16 @@ const MemberRegistration = () => {
                         name,
                         email,
                         password,
+                        numberplate,
                     }),
                 });
                 res.status === 200 && router.push("/dashboard/login");
                 res.status === 401 &&
                     setErrorWarning("User with that email already exists");
+                res.status === 404 &&
+                    setErrorWarning(
+                        "Another user has already registered that vehicle numberplate",
+                    );
                 res.status === 500 &&
                     setErrorWarning("Server error, please try again later");
             } catch (err: any) {
@@ -46,7 +58,9 @@ const MemberRegistration = () => {
                 // console.log(error);
             }
         } else {
-            setErrorWarning("Please enter a valid username, email or password");
+            setErrorWarning(
+                "Please make sure all fields are filled in correctly and/or your password is at least 4 characters long",
+            );
         }
         setPendingResponse(false);
     };
@@ -83,6 +97,17 @@ const MemberRegistration = () => {
                         placeholder="Enter your password"
                         onInput={(e) => {
                             setPassword((e.target as HTMLInputElement).value);
+                            setErrorWarning("");
+                        }}
+                    />
+                    <input
+                        className={styles.emailForm__form__input}
+                        type="text"
+                        placeholder="Enter the numberplate of your vehicle"
+                        onInput={(e) => {
+                            setNumberplate(
+                                (e.target as HTMLInputElement).value,
+                            );
                             setErrorWarning("");
                         }}
                     />

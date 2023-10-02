@@ -5,7 +5,7 @@ import { faUserCheck, faUserLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "./CarparkStatus.module.scss";
 
-const updateIntervalInSeconds = 30; // Set your desired interval in seconds
+const updateIntervalInSeconds = 15; // Set your desired interval in seconds
 
 const CarparkStatus = () => {
     const [carparkOccupied1, setCarparkOccupied1] = useState("true");
@@ -16,10 +16,10 @@ const CarparkStatus = () => {
         const availabilityArr = (await res.json()).data;
 
         const carpark1 = availabilityArr.find(
-            (item) => Number(item.carpark_no) === 1,
+            (item: any) => Number(item.carpark_no) === 1,
         );
         const carpark2 = availabilityArr.find(
-            (item) => Number(item.carpark_no) === 2,
+            (item: any) => Number(item.carpark_no) === 2,
         );
 
         setCarparkOccupied1(carpark1.carpark_occupied);
@@ -53,7 +53,7 @@ const CarparkStatus = () => {
                         color: carparkOccupied1 == "true" ? "red" : "green",
                     }}
                 />
-                <p className={styles.card__title}>Carpark 1</p>
+                <p className={styles.card__title}>Carpark A</p>
                 <p className={styles.card__description}>
                     This carpark is currently{" "}
                     {carparkOccupied1 == "true" ? "occupied" : "vacant"}
@@ -71,7 +71,7 @@ const CarparkStatus = () => {
                         color: carparkOccupied2 == "true" ? "red" : "green",
                     }}
                 />
-                <p className={styles.card__title}>Carpark 2</p>
+                <p className={styles.card__title}>Carpark B</p>
                 <p className={styles.card__description}>
                     This carpark is currently{" "}
                     {carparkOccupied2 == "true" ? "occupied" : "vacant"}

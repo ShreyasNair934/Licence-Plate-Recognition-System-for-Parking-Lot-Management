@@ -5,21 +5,15 @@ import { getSession } from "next-auth/react";
 import { NextApiRequest } from "next";
 
 export const GET = async (request: any) => {
-    const session = await getSession({ req: request });
+    try {
+        await connect();
 
-    if (!session) {
-        return new NextResponse("Unauthorized", { status: 401 });
-    } else {
-        try {
-            await connect();
+        const selectedFields = ["name", "email", "vehicles"];
 
-            const selectedFields = ["name", "email", "vehicles"];
+        const users: any = await User.find().select(selectedFields).exec();
 
-            const users: any = await User.find().select(selectedFields).exec();
-
-            return new NextResponse(users, { status: 200 }).json();
-        } catch (err) {
-            return new NextResponse("Database Error", { status: 500 });
-        }
+        return NextResponse.json({ data: users }, { status: 200 });
+    } catch (err) {
+        return new NextResponse("Database Error", { status: 500 });
     }
 };

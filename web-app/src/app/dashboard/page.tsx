@@ -4,6 +4,8 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 import AdminTable from "@/components/AdminTable";
 import CarparkStatus from "@/components/CarparkStatus";
 import CarparkBooking from "@/components/CarparkBooking";
+import UserCarparkStatus from "@/components/UserCarparkStatus";
+import AdminCarparkStatus from "@/components/AdminCarparkStatus/AdminCarparkStatus";
 
 const Dashboard = async () => {
     const session = await getServerSession(authOptions);
@@ -20,10 +22,15 @@ const Dashboard = async () => {
     return (
         <main>
             <div className={styles.main__intro}>{generateDashboard()}</div>
-            {session?.user?.role === "admin" ||
-                (session?.user?.role === "user" && <CarparkStatus />)}
-            {session?.user?.role === "admin" && <AdminTable />}
-            {session?.user?.role === "user" && <CarparkBooking />}
+            {session?.user?.role === "user" && (
+                <UserCarparkStatus email={session?.user?.email} />
+            )}
+            {session?.user?.role === "admin" && (
+                <>
+                    <CarparkStatus />
+                    <AdminCarparkStatus />
+                </>
+            )}
         </main>
     );
 };

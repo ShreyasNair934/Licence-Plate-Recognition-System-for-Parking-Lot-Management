@@ -6,10 +6,17 @@
     &__intro {
         font-size: 40px;
         font-weight: 300;
-
+        margin: 0.2em;
         color: white;
         text-align: center;
-        margin: 1em 1em 1.5em 1em;
+    }
+
+    &__prompt {
+        font-size: 30px;
+        font-weight: 300;
+        margin: 1em;
+        color: white;
+        text-align: center;
     }
 }
 

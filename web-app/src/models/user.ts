@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { TRUE } from "sass";
 
 const { Schema } = mongoose;
 
@@ -18,13 +19,13 @@ const userSchema = new Schema(
             type: String,
             required: true,
         },
+        vehicles: {
+            type: [String],
+            required: true,
+        },
         role: {
             type: String,
             required: true,
-        },
-        vehicles: {
-            type: Array<String>,
-            required: false,
         },
     },
     { timestamps: true },
