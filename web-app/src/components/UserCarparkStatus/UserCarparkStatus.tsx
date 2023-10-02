@@ -41,13 +41,13 @@ const UserCarparkStatus = (props: any) => {
         <>
             {parkedVehicles.length === 0 ? (
                 <div className={styles.prompt}>
-                    We've not detected any parked vehicles linked to your
+                    We have not detected any parked vehicles linked to your
                     account
                 </div>
             ) : (
                 <section className={styles.container}>
                     <div className={styles.prompt}>
-                        We've detected the following parked vehicle linked to
+                        We have detected the following parked vehicle linked to
                         your account
                     </div>
                     <table className={styles.mainTable}>
