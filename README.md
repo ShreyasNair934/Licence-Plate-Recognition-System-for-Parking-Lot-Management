@@ -51,24 +51,6 @@ While currently focused on license plate recognition, this system can be integra
 
 ---
 
-## How to Use
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/license-plate-recognition.git
-   ```
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Connect the Raspberry Pi camera and ensure it is properly configured.
-4. Run the system:
-   ```bash
-   python main.py
-   ```
-
----
-
 ## Technologies Used
 
 - **Python**
